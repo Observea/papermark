@@ -5,13 +5,13 @@ export const TriggerCustomProvider = ({
 }: {
   children: React.ReactNode;
 }) => {
-  if (!process.env.NEXT_PUBLIC_TRIGGER_PUBLIC_API_KEY) {
+  if (!process.env.TRIGGER_PUBLIC_API_KEY) {
     return <>{children}</>;
   }
 
   return (
     <TriggerProvider
-      publicApiKey={process.env.NEXT_PUBLIC_TRIGGER_PUBLIC_API_KEY}
+      publicApiKey={process.env.TRIGGER_PUBLIC_API_KEY}
     >
       {children}
     </TriggerProvider>
