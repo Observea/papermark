@@ -15,7 +15,7 @@ import {
 } from "@react-email/components";
 
 export default function InvalidDomain({
-  domain = "papermark.io",
+  domain = `${process.env.DEFAULT_DOMAIN || "papermark.io"}`,
   invalidDays = 14,
 }: {
   domain: string;

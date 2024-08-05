@@ -14,7 +14,7 @@ import {
 } from "@react-email/components";
 
 export default function DomainDeleted({
-  domain = "papermark.io",
+  domain = `${process.env.DEFAULT_DOMAIN || "papermark.io"}`,
 }: {
   domain: string;
 }) {

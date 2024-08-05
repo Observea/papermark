@@ -38,7 +38,7 @@ export async function POST(req: Request) {
       where: {
         slug: {
           // exclude domains that belong to us
-          notIn: ["papermark.io"],
+          notIn: [`${process.env.DEFAULT_DOMAIN || "papermark.io"}`],
         },
       },
       select: {

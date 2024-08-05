@@ -51,7 +51,7 @@ export default function RootLayout({
     <html lang="en">
       <head>
         <PlausibleProvider
-          domain="papermark.io"
+          domain={`${process.env.DEFAULT_DOMAIN || "papermark.io"}`}
           enabled={process.env.NEXT_PUBLIC_VERCEL_ENV === "production"}
         />
       </head>

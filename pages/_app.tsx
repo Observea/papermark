@@ -75,7 +75,7 @@ export default function App({
         <PostHogCustomProvider>
           <ThemeProvider attribute="class" defaultTheme="light" enableSystem>
             <PlausibleProvider
-              domain="papermark.io"
+              domain={`${process.env.DEFAULT_DOMAIN || "papermark.io"}`}
               enabled={process.env.NEXT_PUBLIC_VERCEL_ENV === "production"}
             >
               <main className={inter.className}>

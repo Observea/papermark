@@ -14,7 +14,7 @@ import {
 } from "@react-email/components";
 
 export default function EmailVerification({
-  verificationURL = "papermark.io",
+  verificationURL = `${process.env.DEFAULT_DOMAIN || "papermark.io"}`,
   email = "test@test.com",
 }: {
   verificationURL: string;

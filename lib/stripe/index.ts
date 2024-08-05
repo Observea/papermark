@@ -5,7 +5,7 @@ export const stripe = new Stripe(
   {
     apiVersion: "2024-06-20",
     appInfo: {
-      name: "Papermark.io",
+      name: `${process.env.DEFAULT_DOMAIN || "papermark.io"}`,
       version: "0.1.0",
     },
     typescript: true,

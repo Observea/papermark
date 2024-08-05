@@ -81,7 +81,7 @@ export default async function handler(
       let { domain, slug, ...linkData } = linkDomainData;
 
       // set domain and slug to null if the domain is papermark.io
-      if (domain && domain === "papermark.io") {
+      if (domain && domain === `${process.env.DEFAULT_DOMAIN || "papermark.io"}`) {
         domain = null;
         slug = null;
       }
