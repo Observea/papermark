@@ -79,11 +79,11 @@ export function usePlan() {
   );
 
   // Parse the plan using the parsing function
-  const parsedPlan = plan ? parsePlan(process.env.BASE_PLAN as BasePlan ?? plan.plan) : { plan: null, trial: null };
+  const parsedPlan = plan ? parsePlan(plan.plan) : { plan: null, trial: null };
 
   return {
-    plan: parsedPlan.plan,
-    trial: parsedPlan.trial,
+    plan: process.env.BASE_PLAN ? process.env.BASE_PLAN as BasePlan : parsedPlan.plan,
+    trial: process.env.BASE_PLAN ? null : parsedPlan.trial,
     loading: !plan && !error,
     error,
   };
