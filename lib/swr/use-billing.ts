@@ -70,14 +70,6 @@ export function usePlan() {
   const teamInfo = useTeam();
   const teamId = teamInfo?.currentTeam?.id;
 
-  if (process.env.BASE_PLAN) {
-    return {
-      plan: process.env.BASE_PLAN,
-      trial: null,
-      loading: false
-    };
-  }
-
   const { data: plan, error } = useSWR<PlanResponse>(
     teamId && `/api/teams/${teamId}/billing/plan`,
     fetcher,
@@ -88,6 +80,15 @@ export function usePlan() {
 
   // Parse the plan using the parsing function
   const parsedPlan = plan ? parsePlan(plan.plan) : { plan: null, trial: null };
+
+  if (process.env.BASE_PLAN) {
+    return {
+      plan: process.env.BASE_PLAN,
+      trial: null,
+      loading: !plan && !error,
+      error
+    };
+  }
 
   return {
     plan: parsedPlan.plan,
