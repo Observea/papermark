@@ -70,6 +70,14 @@ export function usePlan() {
   const teamInfo = useTeam();
   const teamId = teamInfo?.currentTeam?.id;
 
+  if (process.env.BASE_PLAN) {
+    return {
+      plan: process.env.BASE_PLAN,
+      trial: null,
+      loading: false
+    };
+  }
+
   const { data: plan, error } = useSWR<PlanResponse>(
     teamId && `/api/teams/${teamId}/billing/plan`,
     fetcher,
